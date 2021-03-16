@@ -19,8 +19,10 @@
 <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#installing">Installing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#built_using">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#author">Authors</a>nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#testing">Testing</a>nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#author">Authors</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#testing">Testing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#gh-action">Github Actions</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 
@@ -43,6 +45,8 @@ This project is based on an app for grouping payments by goal with your family/f
 
 ## 🔧 Built with<a name = "built_using"></a>
 
+- Ruby
+- Ruby On Rails
 
 
 ### 🛠 Installing <a name = "installing"></a>
@@ -64,7 +68,7 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-### Run tests
+### Testing
 
 - Run `bundle exec rspec` to run all the tests
 
