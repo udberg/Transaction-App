@@ -19,17 +19,27 @@
 <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#installing">Installing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#built_using">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#author">Authors</a>
-<a href="#testing">Testing</a>
+<a href="#author">Authors</a>nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#testing">Testing</a>nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 
 ## 🧐 About <a name = "about"></a>
 <h3 align="center"> 
-
+This project is based on an app for grouping payments by goal with your family/friends. The contents of this website are personalized, i.e., - it can be for grouping hours spent on different projects at your university or for grouping kilometers by means of transportations in your family - anything that you can share with other people and group by some category. You can access all the design info (color, typography, layouts) in this link: https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding Design idea by Gregoire Vella on Behance.
 </h3>
 
 ---
+## Features
+
+- User can signup and login
+- Guest user can't access any other page in the app except login and signup pages
+- Logged in user can access her and only her profile page
+- Profile page provides links to "All my transactions", "All my external transactions" and "All groups"
+- Logged in user can view all his transactions and create new ones which can be assigned to a group
+- Logged in user can view all groups and create a new
+- Logged in user can visit show page of a group which will list all payments associated with it
+- Followed Test Driven Development
 
 ## 🔧 Built with<a name = "built_using"></a>
 
@@ -37,10 +47,26 @@
 
 ### 🛠 Installing <a name = "installing"></a>
 
-- Clone by running the following command;
+- Clone the repo `https://github.com/udberg/TransactionApp`
+- cd `into` the project
+- Run `git pull origin transiction`
+- Run `bundle install`
+- Run `yarn install --check-files`
+- Setup your `db` in the `database.yml` and run `rails db:setup`
+- Run `rails s` and visit `localhost:3000`
 
-- 
+### Github Actions
 
+To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
+
+1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
+2. Create the `feature/branch` and push.
+3. Start working on your milestone as usual.
+4. Open a PR from the `feature/branch` when your work is done.
+
+### Run tests
+
+- Run `bundle exec rspec` to run all the tests
 
 ## ✒️  Authors <a name = "author"></a>
 
@@ -61,6 +87,10 @@ Feel free to check the [issues page](https://github.com/udberg/TransactionApp/is
 ## 👍 Show your support
 
 Give a ⭐️ if you like this project or found it useful! They're free...
+
+## Acknowledgments
+
+The design of the project was inspired by [Snapscan](https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding) by [GregoireVella](https://www.behance.net/gregoirevella).
 
 
 ## 📝 License
