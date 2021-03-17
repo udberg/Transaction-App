@@ -1,0 +1,11 @@
+<%= provide(:title,'Create Transaction') %>
+<div class='bg-white  p-4'>
+<h2>New transaction</h2>
+
+  <%= render 'form', payment: @payment %>
+
+  <div class='mt-3'>
+    <%= link_to icon("arrow-left-square", class: "text-danger main__icon"), payments_path %>
+    <%= link_to 'Create group', new_group_path, class: 'btn btn-primary' %>
+  </div>
+</div>

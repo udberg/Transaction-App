@@ -1,0 +1,36 @@
+// Place all the styles related to the user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.main__icon {
+  height: 30px;
+  width: 30px;
+}
+
+.text-lg {
+  font-size: 24px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.pagination {
+  align-items: center;
+}
+
+.size {
+  height: 75px;
+  width: 75px;
+}
+
+.h-85 {
+  height: 100vh;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.border {
+  border: 1px solid #ddd;
+}

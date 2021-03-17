@@ -1,0 +1,10 @@
+<%= provide(:title,'Edit Transaction') %>
+<div class='bg-white  p-4'>
+<h2>Edit Transaction</h2>
+
+<%= render 'form', payment: @payment %>
+   <div class='mt-3'>
+      <%= link_to icon("arrow-left-square", class: "text-danger main__icon"), payments_path %>
+    </div>
+
+</div>
