@@ -1,0 +1,13 @@
+development:
+  cloud_name: dflkwvvnz
+  api_key: '567341118483814'
+  api_secret: H7P_gxrvyA4i0OyKOnPSpsGYdqI
+  enhance_image_tag: true
+  static_file_support: false
+
+production:
+  cloud_name: dflkwvvnz
+  api_key: '567341118483814'
+  api_secret: H7P_gxrvyA4i0OyKOnPSpsGYdqI
+  enhance_image_tag: true
+  static_file_support: false
