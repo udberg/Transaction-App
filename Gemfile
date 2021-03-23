@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap'
 gem 'carrierwave'
@@ -30,13 +29,13 @@ group :development, :test do
 end
 
 group :development do
-gem 'better_errors', '~> 2.8', '>= 2.8.3'
-gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+  gem 'better_errors', '~> 2.8', '>= 2.8.3'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop'
   gem 'spring'
   gem 'web-console', '>= 3.3.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
