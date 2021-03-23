@@ -3,20 +3,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+
+gem 'bootstrap'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'devise', '~> 4.7'
+gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'puma', '~> 4.1'
+gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'bootstrap'
-gem 'jbuilder', '~> 2.7'
-gem 'devise', '~> 4.7'
-gem 'carrierwave'
 gem 'simple_form', '~> 5.1'
-gem 'cloudinary'
 gem 'will_paginate'
-gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate-bootstrap4'
 
 
