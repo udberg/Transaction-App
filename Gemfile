@@ -20,7 +20,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri, mingw, x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.34'
   gem 'factory_bot_rails', '~> 6.1'
   gem 'rspec-rails'
@@ -37,4 +37,4 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-gem 'tzinfo-data', platforms: %i[mingw, mswin, x64_mingw, jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw, jruby]
