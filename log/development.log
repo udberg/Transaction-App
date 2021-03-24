@@ -1092,3 +1092,926 @@ Processing by PaymentsController#external_payment as HTML
 Completed 200 OK in 125ms (Views: 100.1ms | ActiveRecord: 17.7ms | Allocations: 15068)
 
 
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:18:58 +0100
+  [1m[35m (13.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 144.3ms | Allocations: 12332)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.3ms | Allocations: 308)
+  Rendered layouts/_flash.html.erb (Duration: 1.9ms | Allocations: 268)
+Completed 200 OK in 333ms (Views: 238.4ms | ActiveRecord: 13.2ms | Allocations: 30388)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 13:19:01 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (2.1ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  Rendered payments/index.html.erb within layouts/application (Duration: 31.4ms | Allocations: 4661)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 138ms (Views: 60.7ms | ActiveRecord: 24.2ms | Allocations: 24248)
+
+
+Started GET "/external_payments" for 127.0.0.1 at 2021-03-24 13:19:05 +0100
+Processing by PaymentsController#external_payment as HTML
+  [1m[36mUser Load (13.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL)[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:56:in `external_payment'
+  Rendering payments/external_payment.html.erb within layouts/application
+  [1m[36mPayment Load (1.0ms)[0m  [1m[34mSELECT "payments".* FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL) LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/external_payment.html.erb:4
+  [1m[36mPaymentsGroup Load (0.8ms)[0m  [1m[34mSELECT "payments_groups".* FROM "payments_groups" WHERE "payments_groups"."payment_id" IN ($1, $2)[0m  [["payment_id", 2], ["payment_id", 5]]
+  ↳ app/views/payments/external_payment.html.erb:4
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL)[0m  [["user_id", 1]]
+  ↳ app/views/payments/external_payment.html.erb:30
+  Rendered payments/external_payment.html.erb within layouts/application (Duration: 90.0ms | Allocations: 11100)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 141ms (Views: 109.8ms | ActiveRecord: 22.3ms | Allocations: 21399)
+
+
+Started GET "/groups" for 127.0.0.1 at 2021-03-24 13:19:09 +0100
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups" ORDER BY "groups"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/groups/index.html.erb:5
+  Rendered groups/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1194)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 59ms (Views: 35.2ms | ActiveRecord: 13.8ms | Allocations: 11381)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2021-03-24 13:19:10 +0100
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 189)
+  Rendered groups/_form.html.erb (Duration: 29.0ms | Allocations: 1768)
+  Rendered groups/new.html.erb within layouts/application (Duration: 34.8ms | Allocations: 2270)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 119ms (Views: 70.5ms | ActiveRecord: 0.5ms | Allocations: 14194)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2021-03-24 13:21:01 +0100
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered groups/_form.html.erb (Duration: 7.2ms | Allocations: 656)
+  Rendered groups/new.html.erb within layouts/application (Duration: 8.9ms | Allocations: 873)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 86)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 59ms (Views: 52.3ms | ActiveRecord: 1.5ms | Allocations: 9949)
+
+
+Started GET "/groups" for 127.0.0.1 at 2021-03-24 13:21:04 +0100
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (11.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (5.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" ORDER BY "groups"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/groups/index.html.erb:5
+  Rendered groups/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 887)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 87)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 61ms (Views: 39.3ms | ActiveRecord: 16.4ms | Allocations: 10029)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:21:05 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 17.5ms | Allocations: 859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 91ms (Views: 83.5ms | ActiveRecord: 0.3ms | Allocations: 9929)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:21:06 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 853)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 53ms (Views: 39.7ms | ActiveRecord: 7.8ms | Allocations: 9887)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 13:21:08 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (17.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (1.8ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  Rendered payments/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1413)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 67ms (Views: 31.9ms | ActiveRecord: 20.4ms | Allocations: 11507)
+
+
+Started GET "/payments/new" for 127.0.0.1 at 2021-03-24 13:21:09 +0100
+Processing by PaymentsController#new as HTML
+  [1m[36mUser Load (30.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/payments/_form.html.erb:11
+  Rendered payments/_form.html.erb (Duration: 37.3ms | Allocations: 5170)
+  Rendered payments/new.html.erb within layouts/application (Duration: 45.2ms | Allocations: 5713)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 115ms (Views: 76.7ms | ActiveRecord: 30.7ms | Allocations: 14825)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2021-03-24 13:21:13 +0100
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered groups/_form.html.erb (Duration: 2.7ms | Allocations: 662)
+  Rendered groups/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 881)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 49ms (Views: 41.6ms | ActiveRecord: 1.5ms | Allocations: 9963)
+
+
+Started POST "/groups" for 127.0.0.1 at 2021-03-24 13:21:40 +0100
+Processing by GroupsController#create as HTML
+  Parameters: {"authenticity_token"=>"RguS8RFKDXeZrBYFteMePzInHvNcEGs79AjYA+gVdfARYOLF8c57ll5OavybJxIa8RvCPaXA0BHz0UfWbWuOLQ==", "group"=>{"name"=>"A Week In Maldvies - Jessy's Birthday"}, "commit"=>"Submit"}
+  [1m[36mUser Load (7.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.8ms | Allocations: 153)
+  Rendered groups/_form.html.erb (Duration: 5.9ms | Allocations: 803)
+  Rendered groups/new.html.erb within layouts/application (Duration: 9.4ms | Allocations: 1021)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 77)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 10)
+Completed 200 OK in 118ms (Views: 79.8ms | ActiveRecord: 7.5ms | Allocations: 12712)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:21:54 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 858)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 61ms (Views: 49.0ms | ActiveRecord: 4.2ms | Allocations: 9804)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-03-24 13:21:56 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VxtL5v2gK7auoiLabXCLwu/WVVensT4PA2UIhwaZAXBR+LIWEx1Jt981D1edXMPQjRs8poElkktDZqskB062qQ=="}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (25.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (6.3ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", nil], ["updated_at", "2021-03-24 12:21:57.135431"], ["id", 1]]
+  [1m[35m (26.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 124ms (ActiveRecord: 60.8ms | Allocations: 7267)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:21:57 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 310)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:21:57 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 12.1ms | Allocations: 593)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 207.2ms | Allocations: 15912)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 151)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 21)
+Completed 200 OK in 295ms (Views: 292.1ms | ActiveRecord: 0.0ms | Allocations: 24872)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:22:04 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:22:04 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.3ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 74.0ms | Allocations: 9149)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 21)
+Completed 200 OK in 133ms (Views: 131.1ms | ActiveRecord: 0.0ms | Allocations: 17065)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:22:05 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 291)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:22:05 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 61.3ms | Allocations: 9136)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+Completed 200 OK in 117ms (Views: 112.5ms | ActiveRecord: 0.0ms | Allocations: 16956)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2021-03-24 13:22:09 +0100
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 167)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 26.0ms | Allocations: 4011)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 3.4ms | Allocations: 151)
+  Rendered layouts/_flash.html.erb (Duration: 32.3ms | Allocations: 17)
+Completed 200 OK in 126ms (Views: 123.0ms | ActiveRecord: 0.0ms | Allocations: 12467)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:29:07 +0100
+  [1m[35m (8.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 20ms (ActiveRecord: 0.0ms | Allocations: 1210)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:29:07 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.5ms | Allocations: 594)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 76.4ms | Allocations: 16249)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.6ms | Allocations: 373)
+  Rendered layouts/_flash.html.erb (Duration: 3.7ms | Allocations: 269)
+Completed 200 OK in 291ms (Views: 215.8ms | ActiveRecord: 9.4ms | Allocations: 41581)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:29:11 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 289)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:29:11 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 28.7ms | Allocations: 9129)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 151)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+Completed 200 OK in 51ms (Views: 48.8ms | ActiveRecord: 0.0ms | Allocations: 16980)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:29:12 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 291)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:29:12 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 33.8ms | Allocations: 9120)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+Completed 200 OK in 64ms (Views: 61.4ms | ActiveRecord: 0.0ms | Allocations: 16947)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-24 13:29:16 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 118)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 46.8ms | Allocations: 10631)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 151)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 77ms (Views: 74.7ms | ActiveRecord: 0.0ms | Allocations: 19161)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 13:29:19 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 283)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 13:29:19 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 41.5ms | Allocations: 9129)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 151)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+Completed 200 OK in 68ms (Views: 65.1ms | ActiveRecord: 0.0ms | Allocations: 16963)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:01:29 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms | Allocations: 297)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 15:01:30 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 36.6ms | Allocations: 9130)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 21)
+Completed 200 OK in 102ms (Views: 97.4ms | ActiveRecord: 0.0ms | Allocations: 17042)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:01:32 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 285)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 15:01:32 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 31.8ms | Allocations: 9121)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+Completed 200 OK in 65ms (Views: 63.3ms | ActiveRecord: 0.0ms | Allocations: 17040)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:04:34 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 285)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 15:04:35 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 140.4ms | Allocations: 9118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 21)
+Completed 200 OK in 621ms (Views: 615.2ms | ActiveRecord: 0.0ms | Allocations: 16946)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-24 15:04:45 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 80)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 440.4ms | Allocations: 9822)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.3ms | Allocations: 17)
+Completed 200 OK in 834ms (Views: 831.0ms | ActiveRecord: 0.0ms | Allocations: 17568)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 15:04:49 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 5.3ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 308.7ms | Allocations: 9118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 144)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 374ms (Views: 368.6ms | ActiveRecord: 0.0ms | Allocations: 16910)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-03-24 15:04:52 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"EF4CIxISKmxDo2lFva/rgs3uHKXlfgvJwKEJXH68zR3P1+6rd9QINcVAzlZfZr9i88OC4qHlcIXPWRpJQVK3Eg==", "user"=>{"email"=>"johnuduak066@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "johnuduak066@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 3040ms (ActiveRecord: 9.9ms | Allocations: 5305)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:04:55 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 223.0ms | Allocations: 3126)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 83)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 19)
+Completed 200 OK in 601ms (Views: 582.2ms | ActiveRecord: 1.5ms | Allocations: 12861)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 15:05:06 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (168.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (33.2ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (5.0ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  Rendered payments/index.html.erb within layouts/application (Duration: 37.0ms | Allocations: 2711)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 1201ms (Views: 359.7ms | ActiveRecord: 422.4ms | Allocations: 22428)
+
+
+Started GET "/payments/new" for 127.0.0.1 at 2021-03-24 15:05:11 +0100
+Processing by PaymentsController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 188)
+  [1m[36mGroup Load (6.6ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/payments/_form.html.erb:11
+  Rendered payments/_form.html.erb (Duration: 92.1ms | Allocations: 2920)
+  Rendered payments/new.html.erb within layouts/application (Duration: 122.2ms | Allocations: 3471)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 297ms (Views: 230.4ms | ActiveRecord: 41.6ms | Allocations: 15432)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:05:15 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 7.9ms | Allocations: 861)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 215ms (Views: 204.9ms | ActiveRecord: 2.6ms | Allocations: 9795)
+
+
+Started GET "/external_payments" for 127.0.0.1 at 2021-03-24 15:05:18 +0100
+Processing by PaymentsController#external_payment as HTML
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL)[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:56:in `external_payment'
+  Rendering payments/external_payment.html.erb within layouts/application
+  [1m[36mPayment Load (28.8ms)[0m  [1m[34mSELECT "payments".* FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL) LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/external_payment.html.erb:4
+  [1m[36mPaymentsGroup Load (1.2ms)[0m  [1m[34mSELECT "payments_groups".* FROM "payments_groups" WHERE "payments_groups"."payment_id" IN ($1, $2)[0m  [["payment_id", 2], ["payment_id", 5]]
+  ↳ app/views/payments/external_payment.html.erb:4
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL)[0m  [["user_id", 1]]
+  ↳ app/views/payments/external_payment.html.erb:30
+  Rendered payments/external_payment.html.erb within layouts/application (Duration: 451.4ms | Allocations: 8267)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.0ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 670ms (Views: 404.0ms | ActiveRecord: 252.5ms | Allocations: 18521)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:05:25 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 858)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 225ms (Views: 217.2ms | ActiveRecord: 1.1ms | Allocations: 9786)
+
+
+Started GET "/groups" for 127.0.0.1 at 2021-03-24 15:05:27 +0100
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (25.6ms)[0m  [1m[34mSELECT "groups".* FROM "groups" ORDER BY "groups"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/groups/index.html.erb:5
+  Rendered groups/index.html.erb within layouts/application (Duration: 139.4ms | Allocations: 1191)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 471ms (Views: 423.9ms | ActiveRecord: 26.2ms | Allocations: 11032)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:05:32 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 858)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 104.9ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 475ms (Views: 462.6ms | ActiveRecord: 4.7ms | Allocations: 9785)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 15:05:53 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 850)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 71ms (Views: 63.2ms | ActiveRecord: 1.4ms | Allocations: 9762)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 21:58:47 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 19.2ms | Allocations: 855)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.6ms | Allocations: 17)
+Completed 200 OK in 133ms (Views: 76.9ms | ActiveRecord: 21.7ms | Allocations: 9912)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 21:58:49 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 852)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 48ms (Views: 34.3ms | ActiveRecord: 3.8ms | Allocations: 9878)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 21:58:50 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 853)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 37ms (Views: 31.6ms | ActiveRecord: 0.5ms | Allocations: 9767)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-03-24 21:58:52 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"k5jAuuVnwXz7wayx0WSS/U40BoMLh1zF3LGfUdvHyvUb5rpYiSt89MohCc1D8ckDfqjPZwh89gnPG/SjONvWhA=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 30ms (ActiveRecord: 0.6ms | Allocations: 2726)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 21:58:52 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 298)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-24 21:58:52 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 38.9ms | Allocations: 9185)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 151)
+  Rendered layouts/_flash.html.erb (Duration: 0.3ms | Allocations: 21)
+Completed 200 OK in 67ms (Views: 65.5ms | ActiveRecord: 0.0ms | Allocations: 17001)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-03-24 21:58:56 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"WTrgGaUtHUFAtP0szGQowd/JgqD2mBiQC/7L9q5RZ9aBfo25VTXzyT5YeqgC3GNltUmHF+DIUJtFlflFF3Vkiw==", "user"=>{"email"=>"johnuduak066@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "johnuduak066@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", "2021-03-24 20:58:56.815436"], ["updated_at", "2021-03-24 20:58:56.816130"], ["id", 1]]
+  [1m[35m (246.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 698ms (ActiveRecord: 248.5ms | Allocations: 7338)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 21:58:57 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 850)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 19)
+Completed 200 OK in 43ms (Views: 35.1ms | ActiveRecord: 0.5ms | Allocations: 9797)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 21:58:59 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (15.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (7.2ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  Rendered payments/index.html.erb within layouts/application (Duration: 18.2ms | Allocations: 1437)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 122ms (Views: 75.6ms | ActiveRecord: 28.1ms | Allocations: 11528)
+
+
+Started GET "/payments/new" for 127.0.0.1 at 2021-03-24 21:59:01 +0100
+Processing by PaymentsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/payments/_form.html.erb:11
+  Rendered payments/_form.html.erb (Duration: 10.4ms | Allocations: 1576)
+  Rendered payments/new.html.erb within layouts/application (Duration: 12.9ms | Allocations: 1823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 86)
+  Rendered layouts/_flash.html.erb (Duration: 0.4ms | Allocations: 17)
+Completed 200 OK in 137ms (Views: 45.6ms | ActiveRecord: 0.9ms | Allocations: 10996)
+
+
+Started GET "/groups/new" for 127.0.0.1 at 2021-03-24 21:59:32 +0100
+Processing by GroupsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered groups/_form.html.erb (Duration: 27.7ms | Allocations: 4093)
+  Rendered groups/new.html.erb within layouts/application (Duration: 38.7ms | Allocations: 4587)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 89)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 96ms (Views: 66.5ms | ActiveRecord: 0.8ms | Allocations: 16512)
+
+
+Started POST "/groups" for 127.0.0.1 at 2021-03-24 22:00:15 +0100
+Processing by GroupsController#create as HTML
+  Parameters: {"authenticity_token"=>"AY1REQNNol3cm/AOyS5NTFM/uFu9DBPUq05xq36XKodunx55ufaAyB7vuUZyb+MnayqZqARSkzVfMUmxyQ02rw==", "group"=>{"name"=>"Academics", "icon"=>#<ActionDispatch::Http::UploadedFile:0x00007fe66fa18dc8 @tempfile=#<Tempfile:/var/folders/tb/qvjjp3fx2xj5zw8w_j74d2_r0000gn/T/RackMultipart20210324-5926-j8or7u.png>, @original_filename="mentor.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"group[icon]\"; filename=\"mentor.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/groups_controller.rb:21:in `create'
+  [1m[36mGroup Create (25.2ms)[0m  [1m[32mINSERT INTO "groups" ("name", "icon", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Academics"], ["icon", "killkwveuq6spgaq4sb2.png"], ["created_at", "2021-03-24 21:00:15.909138"], ["updated_at", "2021-03-24 21:00:15.909138"], ["user_id", 1]]
+  ↳ app/controllers/groups_controller.rb:21:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/groups_controller.rb:21:in `create'
+  [1m[36mGroup Update All (6.5ms)[0m  [1m[33mUPDATE "groups" SET "icon" = $1 WHERE "groups"."id" = $2[0m  [["icon", "image/upload/v1616619620/killkwveuq6spgaq4sb2.png"], ["id", 1]]
+  ↳ app/controllers/groups_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/groups/1
+Completed 302 Found in 6148ms (ActiveRecord: 32.9ms | Allocations: 158509)
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2021-03-24 22:00:22 +0100
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:33:in `set_group'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:10:in `show'
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mPayment Load (14.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "payments_groups" ON "payments"."id" = "payments_groups"."payment_id" WHERE "payments_groups"."group_id" = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3[0m  [["group_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/groups/show.html.erb:8
+  Rendered groups/show.html.erb within layouts/application (Duration: 20.7ms | Allocations: 1420)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 93)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 23)
+Completed 200 OK in 76ms (Views: 45.5ms | ActiveRecord: 15.2ms | Allocations: 13680)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 22:00:26 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 874)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 117ms (Views: 27.6ms | ActiveRecord: 0.3ms | Allocations: 9927)
+
+
+Started GET "/groups" for 127.0.0.1 at 2021-03-24 22:00:28 +0100
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mGroup Load (4.5ms)[0m  [1m[34mSELECT "groups".* FROM "groups" ORDER BY "groups"."name" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/groups/index.html.erb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/groups/index.html.erb:5
+  Rendered groups/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 2099)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 87)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 43ms (Views: 32.3ms | ActiveRecord: 5.2ms | Allocations: 11255)
+
+
+Started GET "/groups/1" for 127.0.0.1 at 2021-03-24 22:00:31 +0100
+Processing by GroupsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGroup Load (3.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:33:in `set_group'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Group Load (0.0ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/groups_controller.rb:10:in `show'
+  Rendering groups/show.html.erb within layouts/application
+  [1m[36mPayment Load (0.8ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "payments_groups" ON "payments"."id" = "payments_groups"."payment_id" WHERE "payments_groups"."group_id" = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3[0m  [["group_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/groups/show.html.erb:8
+  Rendered groups/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1018)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 87)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 115ms (Views: 100.8ms | ActiveRecord: 4.4ms | Allocations: 11475)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 22:00:34 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 852)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 2.9ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 63ms (Views: 58.4ms | ActiveRecord: 0.3ms | Allocations: 9902)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 22:00:38 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (12.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (1.0ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  Rendered payments/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1446)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 80)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 108ms (Views: 68.3ms | ActiveRecord: 14.1ms | Allocations: 11563)
+
+
+Started GET "/payments/new" for 127.0.0.1 at 2021-03-24 22:00:39 +0100
+Processing by PaymentsController#new as HTML
+  [1m[36mUser Load (19.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 17)
+  [1m[36mGroup Load (35.2ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/payments/_form.html.erb:11
+  Rendered payments/_form.html.erb (Duration: 56.0ms | Allocations: 1683)
+  Rendered payments/new.html.erb within layouts/application (Duration: 58.0ms | Allocations: 1930)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 86)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 206ms (Views: 125.5ms | ActiveRecord: 54.6ms | Allocations: 11008)
+
+
+Started POST "/payments" for 127.0.0.1 at 2021-03-24 22:00:49 +0100
+Processing by PaymentsController#create as HTML
+  Parameters: {"authenticity_token"=>"wHDDLmH4LTSKli7S5XNUqS3+bkcx0SWeTODy0rIWalwjFnc2nZ1BUst1NYyenpniZ3zuIb0VffNqIUz9a72kXg==", "payment"=>{"name"=>"Blocking AGE513", "group_id"=>"1", "amount"=>"1000"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :group_id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/payments_controller.rb:19:in `create'
+  [1m[36mPayment Create (0.9ms)[0m  [1m[32mINSERT INTO "payments" ("name", "amount", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Blocking AGE513"], ["amount", 1000], ["user_id", 1], ["created_at", "2021-03-24 21:00:49.115576"], ["updated_at", "2021-03-24 21:00:49.115576"]]
+  ↳ app/controllers/payments_controller.rb:19:in `create'
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/payments_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[36mPayment Load (1.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[36mPaymentsGroup Create (16.3ms)[0m  [1m[32mINSERT INTO "payments_groups" ("group_id", "payment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["group_id", 1], ["payment_id", 6], ["created_at", "2021-03-24 21:00:49.199435"], ["updated_at", "2021-03-24 21:00:49.199435"]]
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 144ms (ActiveRecord: 30.6ms | Allocations: 13084)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 22:00:49 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 855)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 22)
+Completed 200 OK in 29ms (Views: 21.4ms | ActiveRecord: 1.0ms | Allocations: 9949)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 22:00:50 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (36.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (1.0ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  [1m[35mSQL (0.9ms)[0m  [1m[34mSELECT "payments"."id" AS t0_r0, "payments"."name" AS t0_r1, "payments"."amount" AS t0_r2, "payments"."user_id" AS t0_r3, "payments"."created_at" AS t0_r4, "payments"."updated_at" AS t0_r5, "groups"."id" AS t1_r0, "groups"."name" AS t1_r1, "groups"."icon" AS t1_r2, "groups"."created_at" AS t1_r3, "groups"."updated_at" AS t1_r4, "groups"."user_id" AS t1_r5 FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND "payments"."id" = $2[0m  [["user_id", 1], ["id", 6]]
+  ↳ app/views/payments/index.html.erb:4
+  Rendered payments/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 3364)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 86ms (Views: 35.0ms | ActiveRecord: 41.8ms | Allocations: 13550)
+
+
+Started GET "/payments/new" for 127.0.0.1 at 2021-03-24 22:01:15 +0100
+Processing by PaymentsController#new as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering payments/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  [1m[36mGroup Load (5.7ms)[0m  [1m[34mSELECT "groups".* FROM "groups"[0m
+  ↳ app/views/payments/_form.html.erb:11
+  Rendered payments/_form.html.erb (Duration: 10.9ms | Allocations: 1608)
+  Rendered payments/new.html.erb within layouts/application (Duration: 12.0ms | Allocations: 1854)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 86)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 49ms (Views: 35.6ms | ActiveRecord: 8.1ms | Allocations: 10937)
+
+
+Started POST "/payments" for 127.0.0.1 at 2021-03-24 22:01:23 +0100
+Processing by PaymentsController#create as HTML
+  Parameters: {"authenticity_token"=>"QIaD9j0onlZNDkaZ/k9/FitmzUOQ/5oQskpwVVP9+Saj4DfuwU3yMAztXceForJdYeRNJRw7wn2Ui856ilY3JA==", "payment"=>{"name"=>"Tuition", "group_id"=>"1", "amount"=>"1000"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :group_id[0m
+  [1m[35m (3.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/payments_controller.rb:19:in `create'
+  [1m[36mPayment Create (1.3ms)[0m  [1m[32mINSERT INTO "payments" ("name", "amount", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Tuition"], ["amount", 1000], ["user_id", 1], ["created_at", "2021-03-24 21:01:23.531858"], ["updated_at", "2021-03-24 21:01:23.531858"]]
+  ↳ app/controllers/payments_controller.rb:19:in `create'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/payments_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[36mPayment Load (1.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[36mPaymentsGroup Create (1.5ms)[0m  [1m[32mINSERT INTO "payments_groups" ("group_id", "payment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["group_id", 1], ["payment_id", 7], ["created_at", "2021-03-24 21:01:23.558109"], ["updated_at", "2021-03-24 21:01:23.558109"]]
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/payments_controller.rb:21:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 39ms (ActiveRecord: 11.2ms | Allocations: 9196)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 22:01:23 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 850)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 22)
+Completed 200 OK in 34ms (Views: 27.4ms | ActiveRecord: 0.5ms | Allocations: 9815)
+
+
+Started GET "/payments" for 127.0.0.1 at 2021-03-24 22:01:26 +0100
+Processing by PaymentsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:10:in `index'
+  Rendering payments/index.html.erb within layouts/application
+  [1m[35mSQL (0.9ms)[0m  [1m[34mSELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/index.html.erb:4
+  [1m[35mSQL (1.3ms)[0m  [1m[34mSELECT "payments"."id" AS t0_r0, "payments"."name" AS t0_r1, "payments"."amount" AS t0_r2, "payments"."user_id" AS t0_r3, "payments"."created_at" AS t0_r4, "payments"."updated_at" AS t0_r5, "groups"."id" AS t1_r0, "groups"."name" AS t1_r1, "groups"."icon" AS t1_r2, "groups"."created_at" AS t1_r3, "groups"."updated_at" AS t1_r4, "groups"."user_id" AS t1_r5 FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND "payments"."id" IN ($2, $3)[0m  [["user_id", 1], ["id", 6], ["id", 7]]
+  ↳ app/views/payments/index.html.erb:4
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM (SELECT DISTINCT "payments"."id" FROM "payments" INNER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" INNER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1) subquery_for_count[0m  [["user_id", 1]]
+  ↳ app/views/payments/index.html.erb:31
+  Rendered payments/index.html.erb within layouts/application (Duration: 20.4ms | Allocations: 5115)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 49ms (Views: 36.5ms | ActiveRecord: 5.3ms | Allocations: 15195)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-24 22:01:35 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 850)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 35ms (Views: 27.9ms | ActiveRecord: 2.0ms | Allocations: 9795)
+
+
+Started GET "/external_payments" for 127.0.0.1 at 2021-03-24 22:01:42 +0100
+Processing by PaymentsController#external_payment as HTML
+  [1m[36mUser Load (19.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL)[0m  [["user_id", 1]]
+  ↳ app/controllers/payments_controller.rb:56:in `external_payment'
+  Rendering payments/external_payment.html.erb within layouts/application
+  [1m[36mPayment Load (1.0ms)[0m  [1m[34mSELECT "payments".* FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL) LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/views/payments/external_payment.html.erb:4
+  [1m[36mPaymentsGroup Load (0.5ms)[0m  [1m[34mSELECT "payments_groups".* FROM "payments_groups" WHERE "payments_groups"."payment_id" IN ($1, $2)[0m  [["payment_id", 2], ["payment_id", 5]]
+  ↳ app/views/payments/external_payment.html.erb:4
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "payments" LEFT OUTER JOIN "payments_groups" ON "payments_groups"."payment_id" = "payments"."id" LEFT OUTER JOIN "groups" ON "groups"."id" = "payments_groups"."group_id" WHERE "payments"."user_id" = $1 AND (groups.id IS NULL)[0m  [["user_id", 1]]
+  ↳ app/views/payments/external_payment.html.erb:30
+  Rendered payments/external_payment.html.erb within layouts/application (Duration: 18.1ms | Allocations: 4981)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 74ms (Views: 34.5ms | ActiveRecord: 30.2ms | Allocations: 15104)
+
+
