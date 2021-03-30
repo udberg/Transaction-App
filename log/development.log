@@ -52,3 +52,85 @@ FOREIGN KEY ("blob_id")
   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(5101718339938602480)[0m
   [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-03-31 00:50:13 +0100
+  [1m[35m (94.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+Completed 401 Unauthorized in 67ms (ActiveRecord: 0.0ms | Allocations: 1733)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-31 00:50:14 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.8ms | Allocations: 632)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 16.6ms | Allocations: 2516)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.5
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 2893.2ms | Allocations: 20357)
+Completed 500 Internal Server Error in 2955ms (ActiveRecord: 17.7ms | Allocations: 28302)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/macbook/Documents/TransactionApp/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11: 
+    12:     <!--Import Google Icon Font-->
+    13:     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+app/views/layouts/application.html.erb:10
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-31 00:50:26 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 159)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 754)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.5
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 2162.1ms | Allocations: 6061)
+Completed 500 Internal Server Error in 2166ms (ActiveRecord: 0.0ms | Allocations: 6689)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/macbook/Documents/TransactionApp/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     7:     <%= csp_meta_tag %>
+     8: 
+     9:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11: 
+    12:     <!--Import Google Icon Font-->
+    13:     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+app/views/layouts/application.html.erb:10
