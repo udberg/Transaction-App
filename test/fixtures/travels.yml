@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: MyString
+  name: MyString
+  source: MyString
+  destination: MyString
+  distance: 1
+
+two:
+  employee_id: MyString
+  name: MyString
+  source: MyString
+  destination: MyString
+  distance: 1
