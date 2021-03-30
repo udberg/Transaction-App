@@ -30,21 +30,6 @@
 <h3 align="center"> 
 This project is based on an app for grouping payments by goal with your family/friends. The contents of this website are personalized, i.e., - it can be for grouping hours spent on different projects at your university or for grouping kilometers by means of transportations in your family - anything that you can share with other people and group by some category. You can access all the design info (color, typography, layouts) in this link: https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding Design idea by Gregoire Vella on Behance.
 </h3>
-
-> ![App](./app/assets/images/app.png)
-
-# Transactions page
-
-> ![App](./app/assets/images/app3.png)
-
-# External Transactions page
-
-> ![App](./app/assets/images/app1.png)
-
-# All Groups page
-
-> ![App](./app/assets/images/app2.png)
-
 ---
 
 ## Features
