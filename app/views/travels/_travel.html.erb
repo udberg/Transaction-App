@@ -1,0 +1,33 @@
+<ul class="collection">
+  <li class="collection-item avatar">
+    <div class="row travel_tile">
+      <div class="col s2">
+        <%= travel_icon(travel) %>
+      </div>
+      <div class="col s10">
+          <span class="title pink-text accent-4">
+            <%= travel.user.name %>
+            <span> | </span>
+            <%= travel.user.employee_id.upcase %>
+          </span>
+        <div class="left-align">
+          <p><span class="teal-text">Purpose:</span> <%= travel.purpose %></p>
+          <p><span class="teal-text">Source:</span> <%= travel.source %> </p>
+          <p><span class="teal-text">Destination:</span> <%= travel.destination %></p>
+          <p><span class="teal-text">Date:</span> <%= travel.created_at.to_s(:long_ordinal) %></p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="secondary-content">
+      <%= travel.distance %>
+      <span class="km">km</span>
+    </h3>
+
+    <div>
+      <%= link_to '<i class="small material-icons indigo-text darken-4">visibility</i>'.html_safe, travel %>
+      <%= link_to '<i class="small material-icons teal-text darken-4">mode_edit</i>'.html_safe, edit_travel_path(travel) %>
+      <%= link_to '<i class="small material-icons deep-orange-text accent-3">delete</i>'.html_safe, travel, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </li>
+</ul>

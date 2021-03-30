@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.brand-logo {
+  font-family: 'Pacifico', cursive;
+}
+
+.profile_img {
+  height: 250px;
+  width: 250px;
+}
+
+.profile_info {
+  font-size: 1.2rem;
+  margin-top: 1em;
+}
+
+.profile_info_name {
+  font-size: 2.2rem;
+}
+
+.profile_links {
+  border-top: 1px solid #9e9e9e;
+  margin: 2em;
+  padding: 4em;
+}
+
+.profile_link {
+  font-size: 2rem;
+  color: #fff;
+  text-transform: capitalize;
+  margin-left: 0.2em;
+}
+
+.profile_link:hover {
+  color: #ffca28;
+}
+
+.profile_icon {
+  border-radius: 100%;
+  border: 1px solid white;
+  padding: 0.2em;
+}
+
+.travel_item_icon {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
+
+.km {
+  font-size: 1.2rem;
+}
+
+.travel_tile {
+  margin-left: -5em !important;
+}
+
+.travel_show_text {
+  font-size: 1.4rem;
+}

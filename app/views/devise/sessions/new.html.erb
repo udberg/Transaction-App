@@ -1,0 +1,36 @@
+
+<div class="col s12">
+  <div class="card horizontal left-align">
+    <div class="card-stacked">
+      <div class="card-content">
+
+        <h2>Log in</h2>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password' %>
+
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <br/>
+          <br/>
+          <%= f.submit 'Log In', class:'btn waves-effect waves-light center' %>
+
+        <% end %>
+
+      </div>
+      <div class="card-action center">
+        <h4>New User?</h4>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+

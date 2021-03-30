@@ -1,0 +1,33 @@
+<ul class="collection">
+  <li class="collection-item avatar">
+    <div class="row travel_tile">
+      <div class="col s2">
+        <%= travel_icon(gt) %>
+      </div>
+      <div class="col s10">
+          <span class="title pink-text accent-4">
+            <%= gt.user.name %>
+            <span> | </span>
+            <%= gt.user.employee_id.upcase %>
+          </span>
+        <div class="left-align">
+          <p><span class="teal-text">Purpose:</span> <%= gt.purpose %></p>
+          <p><span class="teal-text">Source:</span> <%= gt.source %> </p>
+          <p><span class="teal-text">Destination:</span> <%= gt.destination %></p>
+          <p><span class="teal-text">Date:</span> <%= gt.created_at.to_s(:long_ordinal) %></p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="secondary-content">
+      <%= gt.distance %>
+      <span class="km">km</span>
+    </h3>
+
+    <div>
+      <%= link_to '<i class="small material-icons indigo-text darken-4">visibility</i>'.html_safe, gt %>
+      <%= edit_travel_link(gt) %>
+      <%= delete_travel_link(gt) %>
+    </div>
+  </li>
+</ul>

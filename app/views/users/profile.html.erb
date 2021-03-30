@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card light-blue darken-1">
+      <div class="card-content white-text">
+
+        <%= profile_avatar %>
+
+        <span class="btn-floating btn-large amber lighten-1">
+          <%= link_to '<i class="large material-icons red-text">mode_edit</i>'.html_safe, edit_user_registration_path %>
+        </span>
+
+        <div class="profile_info">
+          <p class="profile_info_name"><%= current_user.name %></p>
+          <p><%= current_user.employee_id.upcase %></p>
+          <p><%= current_user.email %></p>
+        </div>
+      </div>
+
+      <div class="left-align profile_links">
+          <p>
+            <i class="material-icons white-text profile_icon">airplanemode_active</i>
+            <%= link_to 'All my Travel-logs', travels_path, class: 'profile_link' %>
+          </p>
+          <p>
+            <i class="material-icons white-text profile_icon">airplanemode_inactive</i>
+            <%= link_to 'All my External Travel-logs', external_path, class: 'profile_link' %>
+          </p>
+          <p>
+            <i class="material-icons white-text profile_icon">people</i>
+            <%= link_to 'All groups', groups_path, class: 'profile_link' %>
+          </p>
+      </div>
+
+    </div>
+  </div>
+</div>

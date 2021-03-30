@@ -1,0 +1,27 @@
+
+<div class="col s12">
+  <div class="card horizontal left-align">
+    <div class="card-stacked">
+      <div class="card-content">
+
+        <%= form_with(model: group) do |form| %>
+
+          <%= error_messages_for(group) %>
+
+          <%= form.text_field :name, placeholder: 'Name' %>
+          <%= form.file_field :icon %>
+
+          <br/>
+          <br/>
+          <div class="btn waves-effect waves-light center">
+            <%= form.submit %>
+          </div>
+        <% end %>
+      </div>
+      <div class="card-action">
+        <%= link_to '<i class="small material-icons green-text darken-4">arrow_back</i>'.html_safe, groups_path %>
+      </div>
+    </div>
+  </div>
+</div>
+

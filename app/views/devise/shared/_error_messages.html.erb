@@ -1,0 +1,12 @@
+<% if resource && resource.errors.any? %>
+  <div id="error_explanation">
+    <h2 class="chip red darken-1 white-text">
+      <%= pluralize(resource.errors.count, "error") %> prohibited this post from being saved:
+    </h2>
+    <ul class="collection red-text" >
+      <% resource.errors.full_messages.each do |message| %>
+        <li class="collection-item"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

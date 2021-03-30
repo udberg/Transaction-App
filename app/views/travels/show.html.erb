@@ -1,0 +1,18 @@
+
+<div class="card blue lighten-5">
+  <div class="card-content teal-text darken-4">
+    <%= travel_icon(@travel) %>
+    <span class="card-title pink-text accent-1"><%= @travel.purpose %></span>
+    <p class="travel_show_text"><span class="brown-text darken-4">From:</span> <%= @travel.source %></p>
+    <p class="travel_show_text"><span class="brown-text darken-4">To:</span> <%= @travel.destination %></p>
+    <p class="travel_show_text"><span class="brown-text darken-4">Distance Travelled:</span> <%= @travel.distance %><span>km</span></p>
+    <p class="travel_show_text"><span class="brown-text darken-4">Date:</span> <%= @travel.created_at.to_s(:long_ordinal) %></p>
+  </div>
+  <div class="card-action right-align">
+    <%= link_to '<i class="small material-icons green-text darken-4">arrow_back</i>'.html_safe, external_path %>
+    <%= link_to '<i class="small material-icons">mode_edit</i>'.html_safe, edit_travel_path(@travel) %>
+    <%= link_to '<i class="small material-icons red-text accent-3">delete</i>'.html_safe, @travel, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+
+

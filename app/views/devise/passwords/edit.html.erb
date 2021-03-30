@@ -1,0 +1,33 @@
+
+<div class="col s12">
+  <div class="card horizontal left-align">
+    <div class="card-stacked">
+      <div class="card-content">
+
+        <h2>Change your password</h2>
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <% if @minimum_password_length %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "New Password (#{@minimum_password_length} characters minimum)" %>
+          <% end %>
+
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm Password' %>
+
+          <br/>
+          <br/>
+          <%= f.submit 'Change my password', class:'btn waves-effect waves-light center' %>
+
+        <% end %>
+
+      </div>
+      <div class="card-action center">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+

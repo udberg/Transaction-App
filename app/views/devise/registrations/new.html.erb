@@ -1,0 +1,41 @@
+
+<div class="col s12">
+  <div class="card horizontal left-align">
+    <div class="card-stacked">
+      <div class="card-content">
+
+        <h2>Sign up</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <%= f.text_field :name, autofocus: true, placeholder: 'Name' %>
+          <%= f.text_field :employee_id, autocomplete: "employee_id", placeholder: 'Employee Id (Must be 5 characters in length)' %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: 'Email' %>
+
+
+          <div class="field">
+            <% if @minimum_password_length %>
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+            <% end %><br />
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm Password' %>
+          </div>
+
+          <br/>
+          <br/>
+          <%= f.submit 'SIGN UP', class:'btn waves-effect waves-light center' %>
+
+        <% end %>
+
+      </div>
+      <div class="card-action center">
+        <h4>Already have an Account?</h4>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

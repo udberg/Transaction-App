@@ -1,0 +1,69 @@
+
+<div class="card blue lighten-5">
+  <div class="card-content teal-text darken-4">
+    <%= group_icon(@group) %>
+    <span class="card-title pink-text accent-1"><%= @group.name %></span>
+    <p class="travel_show_text"><span class="brown-text darken-4">Created By: </span> <%= @group.user.name %></p>
+    <p class="travel_show_text"><span class="brown-text darken-4">Author Employee Id: </span> <%= @group.user.employee_id %> </p>
+    <p class="travel_show_text"><span class="brown-text darken-4">Created On: </span> <%= @group.created_at.to_s(:long_ordinal) %></p>
+  </div>
+  <div class="card-action right-align">
+    <%= link_to '<i class="small material-icons green-text darken-4">arrow_back</i>'.html_safe, groups_path %>
+    <%= edit_group_link(@group) %>
+    <%= delete_group_link(@group) %>
+  </div>
+</div>
+
+
+<div class="col s12 m7">
+  <div class="card horizontal">
+    <div class="card-stacked">
+      <div class="card-content row secondary-content pink-text accent-4">
+        <h3 class="col s8 left-align">Total Distance Travelled: </h3>
+        <h3 class="col s4 right-align">
+          <%= @distance %>
+          <span class="km"> km</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render @group_travels %>
+
+
+<%# @group_travels.each do |gt| %>
+<!--  <ul class="collection">-->
+<!--    <li class="collection-item avatar">-->
+<!--      <div class="row travel_tile">-->
+<!--        <div class="col s2">-->
+          <%#= travel_icon(gt) %>
+<!--        </div>-->
+<!--        <div class="col s10">-->
+<!--          <span class="title pink-text accent-4">-->
+            <%#= gt.user.name %>
+<!--            <span> | </span>-->
+            <%#= gt.user.employee_id.upcase %>
+<!--          </span>-->
+<!--          <div class="left-align">-->
+<!--            <p><span class="teal-text">Purpose:</span> <%#= gt.purpose %></p>-->
+<!--            <p><span class="teal-text">Source:</span> <%#= gt.source %> </p>-->
+<!--            <p><span class="teal-text">Destination:</span> <%#= gt.destination %></p>-->
+<!--            <p><span class="teal-text">Date:</span> <%#= gt.created_at.to_s(:long_ordinal) %></p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <h3 class="secondary-content">-->
+        <%#= gt.distance %>
+<!--        <span class="km">km</span>-->
+<!--      </h3>-->
+
+<!--      <div>-->
+        <%#= link_to '<i class="small material-icons indigo-text darken-4">visibility</i>'.html_safe, gt %>
+        <%#= edit_travel_link(gt) %>
+        <%#= delete_travel_link(gt) %>
+<!--      </div>-->
+<!--    </li>-->
+<!--  </ul>-->
+<%# end %>

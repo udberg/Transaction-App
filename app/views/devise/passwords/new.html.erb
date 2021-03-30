@@ -1,0 +1,25 @@
+
+<div class="col s12">
+  <div class="card horizontal left-align">
+    <div class="card-stacked">
+      <div class="card-content">
+
+        <h2>Forgot your password?</h2>
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+
+          <br/>
+          <br/>
+          <%= f.submit 'Send me reset password instructions', class:'btn waves-effect waves-light center' %>
+
+        <% end %>
+
+      </div>
+      <div class="card-action center">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

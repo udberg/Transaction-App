@@ -1,0 +1,30 @@
+
+<div class="col s12">
+  <div class="card horizontal left-align">
+    <div class="card-stacked">
+      <div class="card-content">
+
+        <%= form_with(model: travel) do |form| %>
+
+          <%= error_messages_for(travel) %>
+
+          <%= form.text_field :purpose, placeholder: 'Purpose' %>
+          <%= form.text_field :source, placeholder: 'Source' %>
+          <%= form.text_field :destination, placeholder: 'Destination' %>
+          <%= form.number_field :distance, placeholder: 'Distance (in km)' %>
+
+          <%= form.collection_check_boxes( :group_ids, Group.all, :id, :name ) %>
+
+          <br/>
+          <br/>
+          <div class="btn waves-effect waves-light center">
+            <%= form.submit %>
+          </div>
+        <% end %>
+      </div>
+      <div class="card-action">
+        <%= link_to '<i class="small material-icons green-text darken-4">arrow_back</i>'.html_safe, travels_path %>
+      </div>
+    </div>
+  </div>
+</div>
