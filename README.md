@@ -108,7 +108,7 @@ Feel free to check the [issues page](https://github.com/udberg/TransactionApp/is
 
 ## Live Demo
 
-- [TransactionApp](https://transaction-app-ror.herokuapp.com/)
+- [TransactionApp](https://glacial-hamlet-02969.herokuapp.com/
 
 
 ## 👍 Show your support
