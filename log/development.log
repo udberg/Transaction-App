@@ -686,3 +686,135 @@ Processing by TransactionsController#index as HTML
 Completed 200 OK in 53ms (Views: 26.2ms | ActiveRecord: 7.4ms | Allocations: 4723)
 
 
+Started GET "/" for 127.0.0.1 at 2021-03-31 21:54:02 +0100
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (11.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 93.9ms | Allocations: 3006)
+  Rendered layout layouts/application.html.erb (Duration: 533.8ms | Allocations: 18268)
+Completed 200 OK in 1010ms (Views: 599.2ms | ActiveRecord: 51.6ms | Allocations: 26580)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2021-03-31 21:54:07 +0100
+Processing by RegistrationsController#new as HTML
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered shared/_form.html.erb (Duration: 191.8ms | Allocations: 862)
+  Rendered registrations/new.html.erb within layouts/application (Duration: 200.5ms | Allocations: 1170)
+  Rendered layout layouts/application.html.erb (Duration: 257.5ms | Allocations: 2804)
+Completed 200 OK in 441ms (Views: 328.9ms | ActiveRecord: 3.7ms | Allocations: 5047)
+
+
+Started POST "/sign_up" for 127.0.0.1 at 2021-03-31 21:54:13 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"Uduak"}, "commit"=>"Create User"}
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Create (85.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Uduak"], ["created_at", "2021-03-31 20:54:13.494006"], ["updated_at", "2021-03-31 20:54:13.494006"]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (553.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 860ms (ActiveRecord: 652.4ms | Allocations: 3456)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 21:54:14 +0100
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 1195)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 2824)
+Completed 200 OK in 46ms (Views: 20.7ms | ActiveRecord: 3.5ms | Allocations: 3913)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2021-03-31 21:54:19 +0100
+Processing by RegistrationsController#new as HTML
+  [1m[36mUser Load (22.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered shared/_form.html.erb (Duration: 39.3ms | Allocations: 482)
+  Rendered registrations/new.html.erb within layouts/application (Duration: 47.6ms | Allocations: 575)
+  Rendered layout layouts/application.html.erb (Duration: 126.3ms | Allocations: 2203)
+Completed 200 OK in 246ms (Views: 166.2ms | ActiveRecord: 22.2ms | Allocations: 3292)
+
+
+Started POST "/sign_up" for 127.0.0.1 at 2021-03-31 21:54:24 +0100
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"Uduak"}, "commit"=>"Create User"}
+  [1m[36mUser Load (133.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Create (41.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Uduak"], ["created_at", "2021-03-31 20:54:24.284496"], ["updated_at", "2021-03-31 20:54:24.284496"]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (26.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 433ms (ActiveRecord: 214.1ms | Allocations: 3160)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 21:54:24 +0100
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 9.5ms | Allocations: 1188)
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 2828)
+Completed 200 OK in 172ms (Views: 49.9ms | ActiveRecord: 4.8ms | Allocations: 3917)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2021-03-31 21:54:30 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"Uduak", "commit"=>"Sign In"}
+  [1m[36mUser Load (12.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  [1m[36mUser Load (21.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Uduak"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/main
+Completed 302 Found in 325ms (ActiveRecord: 34.7ms | Allocations: 1688)
+
+
+Started GET "/main" for 127.0.0.1 at 2021-03-31 21:54:31 +0100
+Processing by ProfilController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/profil_controller.rb:5:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering profil/index.html.erb within layouts/application
+  Rendered profil/index.html.erb within layouts/application (Duration: 38.9ms | Allocations: 2056)
+  Rendered layout layouts/application.html.erb (Duration: 64.2ms | Allocations: 3599)
+Completed 200 OK in 99ms (Views: 70.4ms | ActiveRecord: 1.8ms | Allocations: 5714)
+
+
+Started DELETE "/log_out" for 127.0.0.1 at 2021-03-31 21:54:46 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 149ms (ActiveRecord: 6.1ms | Allocations: 1003)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 21:54:46 +0100
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1196)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 2825)
+Completed 200 OK in 50ms (Views: 22.6ms | ActiveRecord: 2.1ms | Allocations: 4070)
+
+

@@ -68,7 +68,7 @@ The data models were constructed according to the following Entity Relationship 
 
 - Clone the repo `https://github.com/udberg/TransactionApp`
 - cd `into` the project
-- Run `git pull origin transiction`
+- Run `git pull origin transaction3`
 - Run `bundle install`
 - Run `yarn install --check-files`
 - Setup your `db` in the `database.yml` and run `rails db:setup`
