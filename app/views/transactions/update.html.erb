@@ -1,0 +1,20 @@
+<div class="container text-center text-white">
+  <h1>Add To A Group</h1>
+</div>
+<div class="container">
+<h2 class="text-white">Existing Groups</h2>
+<% @groups.each do |group| %>
+  <div class="text-white container">
+     <spam class="badge rounded-pill bg-success"><%= group.id %></spam><p class="d-inline">&nbsp<%= group.name %></p>
+  </div>
+<% end %>
+</div>
+<div class="container">
+  <h2 class="text-white mt-2">Group Transaction</h2>
+  <%= form_with model: @transactions, url: add_transaction_path do |form| %>
+    <%= form.label :group, class: "text-white"%>
+    <%= form.text_field :group, class: "form-control", placeholder: "Name of a group" %>
+    <%= form.number_field :transaction_id, value: @transaction.id, type: :hidden %>
+    <%= form.submit 'Group Transaction', class: "btn btn-success form-control" %>
+  <% end %>
+</div>

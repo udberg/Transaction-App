@@ -1,0 +1,12 @@
+<%= form_with model: @user, url: sign_up_path do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger" role="alert">>
+      <% @user.errors.full_messages.each do |message|%>
+        <div><%= message %></div>
+      <%end%>
+    </div>
+  <% end %>
+  <%= form.label :name, class: "text-white" %>
+  <%= form.text_field :name, class: "form-control" %>
+  <%= form.submit class: "btn btn-success form-control mt-2" %>
+<% end %>
