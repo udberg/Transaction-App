@@ -1,0 +1,204 @@
+  [1m[35m (549.2ms)[0m  [1m[35mCREATE DATABASE "Transaction_Group_development" ENCODING = 'unicode'[0m
+  [1m[35m (115.8ms)[0m  [1m[35mCREATE DATABASE "Transaction_Group_test" ENCODING = 'unicode'[0m
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (27.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2826477739574281905)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210318171655)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210318171655"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTransactions (20210318171942)
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "author_id" integer, "name" character varying, "amount" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210318171942"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroups (20210318172142)
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" bigserial primary key, "name" character varying, "icon" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210318172142"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReferencesToTransactions (20210319225953)
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.4ms)[0m  [1m[35mALTER TABLE "transactions" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE INDEX "index_transactions_on_user_id" ON "transactions" ("user_id")[0m
+  [1m[35m (4.2ms)[0m  [1m[35mALTER TABLE "transactions" ADD CONSTRAINT "fk_rails_77364e6416"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210319225953"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReferencesToGroups (20210319231622)
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "groups" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE INDEX "index_groups_on_user_id" ON "groups" ("user_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "groups" ADD CONSTRAINT "fk_rails_5e78cd340a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210319231622"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroupsTransactions (20210320020738)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "groups_transactions" ("id" bigserial primary key, "group_id" bigint NOT NULL, "transaction_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_51a9f21e53"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+, CONSTRAINT "fk_rails_d601c0cb66"
+FOREIGN KEY ("transaction_id")
+  REFERENCES "transactions" ("id")
+)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE INDEX "index_groups_transactions_on_group_id" ON "groups_transactions" ("group_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE INDEX "index_groups_transactions_on_transaction_id" ON "groups_transactions" ("transaction_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210320020738"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DropTable (20210320021902)
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.9ms)[0m  [1m[35mDROP TABLE "group_transactions"[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(2826477739574281905)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE DATABASE "Transaction_Group_development" ENCODING = 'unicode'[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE DATABASE "Transaction_Group_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2826477739574281905)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DropTable (20210320021902)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "group_transactions"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2826477739574281905)[0m
+Started GET "/" for 127.0.0.1 at 2021-03-31 14:30:12 +0100
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20210320021902_drop_table.rb
+
+
+):
+  
+activerecord (6.1.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-mini-profiler (2.3.1) lib/mini_profiler/profiler.rb:373:in `call'
+webpacker (5.2.1) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.1.3) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2826477739574281905)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DropTable (20210320021902)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.6ms)[0m  [1m[35mDROP TABLE "group_transactions"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2826477739574281905)[0m
+Started GET "/" for ::1 at 2021-03-31 14:31:58 +0100
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20210320021902_drop_table.rb
+
+
+):
+  
+activerecord (6.1.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.3) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-mini-profiler (2.3.1) lib/mini_profiler/profiler.rb:373:in `call'
+webpacker (5.2.1) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.1.3) lib/rails/engine.rb:539:in `call'
+puma (5.2.2) lib/puma/configuration.rb:248:in `call'
+puma (5.2.2) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.2) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.2) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.2) lib/puma/server.rb:431:in `process_client'
+puma (5.2.2) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE DATABASE "Transaction_Group_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE DATABASE "Transaction_Group_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2826477739574281905)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DropTable (20210320021902)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "group_transactions"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2826477739574281905)[0m
