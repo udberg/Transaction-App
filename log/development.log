@@ -134,3 +134,227 @@ Your manifest contains:
     13:     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
 app/views/layouts/application.html.erb:10
+Started GET "/" for 127.0.0.1 at 2021-03-31 00:57:47 +0100
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+Completed 401 Unauthorized in 40ms (ActiveRecord: 0.0ms | Allocations: 1799)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-31 00:57:47 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.7ms | Allocations: 639)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 64.7ms | Allocations: 2524)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/macbook/Documents/TransactionApp/public/packs
+[Webpacker] Hash: e332c6419728fac579d5
+Version: webpack 4.46.0
+Time: 15101ms
+Built at: 31/03/2021 00:58:14
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-f826770d917d8a37c1d8.js    125 KiB  application  [emitted] [immutable]  application
+js/application-f826770d917d8a37c1d8.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-f826770d917d8a37c1d8.js js/application-f826770d917d8a37c1d8.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layouts/_header.html.erb (Duration: 3.4ms | Allocations: 385)
+  Rendered layouts/_messages.html.erb (Duration: 2.8ms | Allocations: 167)
+  Rendered layouts/_footer.html.erb (Duration: 2.1ms | Allocations: 308)
+  Rendered layout layouts/application.html.erb (Duration: 27661.4ms | Allocations: 11453)
+Completed 200 OK in 27768ms (Views: 27680.1ms | ActiveRecord: 41.5ms | Allocations: 19421)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-31 00:59:22 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 7.4ms | Allocations: 214)
+  Rendered devise/shared/_links.html.erb (Duration: 63.3ms | Allocations: 143)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 102.1ms | Allocations: 1463)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 4.4ms | Allocations: 254)
+  Rendered layouts/_messages.html.erb (Duration: 0.5ms | Allocations: 58)
+  Rendered layouts/_footer.html.erb (Duration: 1.2ms | Allocations: 126)
+  Rendered layout layouts/application.html.erb (Duration: 511.0ms | Allocations: 5542)
+Completed 200 OK in 551ms (Views: 545.1ms | ActiveRecord: 0.0ms | Allocations: 6830)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-03-31 00:59:46 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"name"=>"Uduak", "employee_id"=>"12345", "email"=>"johnuduak066@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"SIGN UP"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (14.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnuduak066@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (8.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."employee_id") = LOWER($1) LIMIT $2[0m  [["employee_id", "12345"], ["LIMIT", 1]]
+  [1m[36mUser Create (49.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "employee_id", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Uduak"], ["employee_id", "12345"], ["email", "johnuduak066@gmail.com"], ["encrypted_password", "$2a$12$JC2yn4Rq5MMTkQHclMoKQuhK8fNE1g5hSp.CRo5J/dNANft5mMYvK"], ["created_at", "2021-03-30 23:59:48.797701"], ["updated_at", "2021-03-30 23:59:48.797701"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 2311ms (ActiveRecord: 127.0ms | Allocations: 10608)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 00:59:48 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (9.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 87.3ms | Allocations: 6061)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 112)
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 61)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 237.5ms | Allocations: 9808)
+Completed 200 OK in 313ms (Views: 229.9ms | ActiveRecord: 21.9ms | Allocations: 12432)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:01:08 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (7.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 20.1ms | Allocations: 2104)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.5ms | Allocations: 234)
+  Rendered layouts/_messages.html.erb (Duration: 1.6ms | Allocations: 163)
+  Rendered layouts/_footer.html.erb (Duration: 1.7ms | Allocations: 295)
+  Rendered layout layouts/application.html.erb (Duration: 67.1ms | Allocations: 6954)
+Completed 200 OK in 90ms (Views: 66.5ms | ActiveRecord: 10.7ms | Allocations: 9501)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-31 01:01:12 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 35ms (ActiveRecord: 5.7ms | Allocations: 1675)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:01:12 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (2.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 16.6ms | Allocations: 1866)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 108)
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 61)
+  Rendered layouts/_footer.html.erb (Duration: 1.1ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 38.7ms | Allocations: 5701)
+Completed 200 OK in 53ms (Views: 38.2ms | ActiveRecord: 5.1ms | Allocations: 7446)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-03-31 01:01:14 +0100
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 40ms (ActiveRecord: 5.0ms | Allocations: 1676)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:01:14 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (9.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (6.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 15.8ms | Allocations: 1863)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 104)
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 58)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 103.3ms | Allocations: 5690)
+Completed 200 OK in 124ms (Views: 99.1ms | ActiveRecord: 15.8ms | Allocations: 7434)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:01:17 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (5.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 34.7ms | Allocations: 1862)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.0ms | Allocations: 104)
+  Rendered layouts/_messages.html.erb (Duration: 0.7ms | Allocations: 55)
+  Rendered layouts/_footer.html.erb (Duration: 2.5ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 81.0ms | Allocations: 5684)
+Completed 200 OK in 179ms (Views: 81.4ms | ActiveRecord: 10.9ms | Allocations: 7424)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:01:18 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (2.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 13.9ms | Allocations: 1862)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 104)
+  Rendered layouts/_messages.html.erb (Duration: 1.1ms | Allocations: 55)
+  Rendered layouts/_footer.html.erb (Duration: 0.8ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 45.9ms | Allocations: 5684)
+Completed 200 OK in 175ms (Views: 47.7ms | ActiveRecord: 12.4ms | Allocations: 7424)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:03:23 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (21.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 43.2ms | Allocations: 2103)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 5.3ms | Allocations: 235)
+  Rendered layouts/_messages.html.erb (Duration: 1.0ms | Allocations: 163)
+  Rendered layouts/_footer.html.erb (Duration: 9.3ms | Allocations: 296)
+  Rendered layout layouts/application.html.erb (Duration: 89.5ms | Allocations: 6966)
+Completed 200 OK in 124ms (Views: 81.3ms | ActiveRecord: 23.5ms | Allocations: 9503)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:03:44 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (4.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 12.4ms | Allocations: 1866)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 108)
+  Rendered layouts/_messages.html.erb (Duration: 1.4ms | Allocations: 58)
+  Rendered layouts/_footer.html.erb (Duration: 0.6ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | Allocations: 5699)
+Completed 200 OK in 61ms (Views: 32.2ms | ActiveRecord: 6.6ms | Allocations: 7458)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-31 01:03:49 +0100
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (38.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "profile_pic"], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:3:in `profile_avatar'
+  Rendered users/profile.html.erb within layouts/application (Duration: 61.6ms | Allocations: 1862)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 1.0ms | Allocations: 104)
+  Rendered layouts/_messages.html.erb (Duration: 0.5ms | Allocations: 55)
+  Rendered layouts/_footer.html.erb (Duration: 1.5ms | Allocations: 123)
+  Rendered layout layouts/application.html.erb (Duration: 106.8ms | Allocations: 5685)
+Completed 200 OK in 122ms (Views: 72.1ms | ActiveRecord: 40.0ms | Allocations: 7422)
+
+
