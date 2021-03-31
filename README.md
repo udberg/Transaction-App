@@ -44,7 +44,7 @@ This project is based on an app for grouping payments by goal with your family/f
 - Followed Test Driven Development
 
 ## App Home Page
-![](app/assets/images/profil.png)
+![](app/assets/images/transaction1.png)
 ## App log in
 ![](app/assets/images/log_in.png)
 ## App transaction view
