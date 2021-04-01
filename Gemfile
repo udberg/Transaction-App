@@ -10,17 +10,17 @@ gem 'cloudinary'
 gem 'devise', '~> 4.7'
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'puma', '~> 4.1'
+gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sass-rails', '>= 6'
 gem 'simple_form', '~> 5.1'
 gem 'turbolinks', '~> 5'
+gem 'webpacker', '~> 4.0'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
-gem 'webpacker', '~> 4.0'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 3.34'
   gem 'factory_bot_rails', '~> 6.1'
   gem 'rspec-rails'
