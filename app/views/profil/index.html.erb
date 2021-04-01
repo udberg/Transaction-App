@@ -1,0 +1,25 @@
+<div class='container-fluid bg-info d-flex justify-content-center'>
+  <div class="d-block d-block">
+    <%= image_tag('user_logo.png', :class => "h-70 w-100")%>
+    <div class="text-center w-100 text-light">
+      <% if @user%>
+        Sign in as: <%= @user.name %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid bg-info">
+  <%= button_to "Log Out", log_out_path, method: :delete, class: 'mt-5', class: "btn btn-primary btn-lg" %>
+  <div>
+    <%= image_tag('transactions.png', :class => "h-70 w-25")%>
+    <%= link_to 'All my transactions', transaction_path, class: "border-bottom text-light text-decoration-none" %>
+  </div>
+  <div>
+    <%= image_tag('transactions.png', :class => "h-70 w-25")%>
+    <%= link_to 'All my external transactions', ext_transaction_path, class: "border-bottom text-light text-decoration-none" %>
+  </div>
+  <div>
+    <%= image_tag('transactions.png', :class => "h-70 w-25")%>
+    <%= link_to 'All groups', group_path, class: "border-bottom text-light text-decoration-none" %>
+  </div>
+</div>

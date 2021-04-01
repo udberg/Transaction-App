@@ -1,0 +1,23 @@
+<div class='py-5 container-fluid bg-primary d-flex justify-content-center'>
+  <h2>Group</h2>
+</div>
+<div class="d-flex bg-light justify-content-between">
+<spam class="px-2 py-3">Total Group</spam>
+<spam class="px-2 py-3"><%= @count %></spam>
+</div>
+<% @groups.each do |group| %>
+  <%= link_to group_path(id: group.id), method: :post do %>
+  <div class="container border border-white my-2">
+    <div class="d-inline-block w-25 text-white">
+     <%= image_tag('transactions.png', :class => "h-100 w-100") %>
+    </div>
+    <div class="d-inline-block w-50 p-2 text-white">
+      <p><%= group.name %></p>
+      <p><%= group.created_at %></p>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+<div class="bg-success py-4 d-flex justify-content-center">
+  <%= link_to 'Create Group', create_group_path, class: "text-white text-decoration-none border border-white py-3 px-5" %>
+</div>
