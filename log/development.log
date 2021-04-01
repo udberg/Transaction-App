@@ -1,0 +1,206 @@
+Started GET "/" for 127.0.0.1 at 2021-04-01 23:37:27 +0100
+  [1m[35m (10.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 359ms (ActiveRecord: 0.0ms | Allocations: 4244)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-04-01 23:37:29 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 15.6ms | Allocations: 590)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 440.0ms | Allocations: 21257)
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-04-01 23:37:31 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 42.9ms | Allocations: 9169)
+[Webpacker] Compiling...
+[Webpacker] Compiling...
+Started GET "/" for 127.0.0.1 at 2021-04-01 23:38:09 +0100
+Processing by UsersController#show as HTML
+Completed 401 Unauthorized in 9ms (ActiveRecord: 0.0ms | Allocations: 462)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-04-01 23:38:10 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 152.5ms | Allocations: 9149)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/macbook/Documents/TransactionApp/public/packs
+[Webpacker] Hash: c06221ed9fffb6818dec
+Version: webpack 4.46.0
+Time: 45898ms
+Built at: 01/04/2021 23:38:42
+                                          Asset       Size            Chunks                         Chunk Names
+         js/application-353be8dac7580e8ce1b5.js    651 KiB       application  [emitted] [immutable]  application
+     js/application-353be8dac7580e8ce1b5.js.map    764 KiB       application  [emitted] [dev]        application
+    js/bootstrap_custom-43522c29f73dc9f433d6.js    569 KiB  bootstrap_custom  [emitted] [immutable]  bootstrap_custom
+js/bootstrap_custom-43522c29f73dc9f433d6.js.map    657 KiB  bootstrap_custom  [emitted] [dev]        bootstrap_custom
+                                  manifest.json  738 bytes                    [emitted]              
+Entrypoint application = js/application-353be8dac7580e8ce1b5.js js/application-353be8dac7580e8ce1b5.js.map
+Entrypoint bootstrap_custom = js/bootstrap_custom-43522c29f73dc9f433d6.js js/bootstrap_custom-43522c29f73dc9f433d6.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 770 bytes {application} [built]
+[./app/javascript/packs/bootstrap_custom.js] 456 bytes {bootstrap_custom} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} {bootstrap_custom} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} {bootstrap_custom} [built]
+    + 19 hidden modules
+
+  Rendered layouts/_header.html.erb (Duration: 8.8ms | Allocations: 430)
+  Rendered layouts/_flash.html.erb (Duration: 3.8ms | Allocations: 269)
+Completed 200 OK in 71900ms (Views: 71896.4ms | ActiveRecord: 0.0ms | Allocations: 135239)
+
+
+[Webpacker] Compiled all packs in /Users/macbook/Documents/TransactionApp/public/packs
+[Webpacker] Hash: c06221ed9fffb6818dec
+Version: webpack 4.46.0
+Time: 47493ms
+Built at: 01/04/2021 23:38:43
+                                          Asset       Size            Chunks                         Chunk Names
+         js/application-353be8dac7580e8ce1b5.js    651 KiB       application  [emitted] [immutable]  application
+     js/application-353be8dac7580e8ce1b5.js.map    764 KiB       application  [emitted] [dev]        application
+    js/bootstrap_custom-43522c29f73dc9f433d6.js    569 KiB  bootstrap_custom  [emitted] [immutable]  bootstrap_custom
+js/bootstrap_custom-43522c29f73dc9f433d6.js.map    657 KiB  bootstrap_custom  [emitted] [dev]        bootstrap_custom
+                                  manifest.json  738 bytes                    [emitted]              
+Entrypoint application = js/application-353be8dac7580e8ce1b5.js js/application-353be8dac7580e8ce1b5.js.map
+Entrypoint bootstrap_custom = js/bootstrap_custom-43522c29f73dc9f433d6.js js/bootstrap_custom-43522c29f73dc9f433d6.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 770 bytes {application} [built]
+[./app/javascript/packs/bootstrap_custom.js] 456 bytes {bootstrap_custom} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} {bootstrap_custom} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} {bootstrap_custom} [built]
+    + 19 hidden modules
+
+  Rendered layouts/_header.html.erb (Duration: 1.3ms | Allocations: 205)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 21)
+Completed 200 OK in 74196ms (Views: 74005.9ms | ActiveRecord: 59.7ms | Allocations: 202762)
+
+
+[Webpacker] Compiled all packs in /Users/macbook/Documents/TransactionApp/public/packs
+[Webpacker] Hash: c06221ed9fffb6818dec
+Version: webpack 4.46.0
+Time: 22313ms
+Built at: 01/04/2021 23:38:47
+                                          Asset       Size            Chunks                         Chunk Names
+         js/application-353be8dac7580e8ce1b5.js    651 KiB       application  [emitted] [immutable]  application
+     js/application-353be8dac7580e8ce1b5.js.map    764 KiB       application  [emitted] [dev]        application
+    js/bootstrap_custom-43522c29f73dc9f433d6.js    569 KiB  bootstrap_custom  [emitted] [immutable]  bootstrap_custom
+js/bootstrap_custom-43522c29f73dc9f433d6.js.map    657 KiB  bootstrap_custom  [emitted] [dev]        bootstrap_custom
+                                  manifest.json  738 bytes                    [emitted]              
+Entrypoint application = js/application-353be8dac7580e8ce1b5.js js/application-353be8dac7580e8ce1b5.js.map
+Entrypoint bootstrap_custom = js/bootstrap_custom-43522c29f73dc9f433d6.js js/bootstrap_custom-43522c29f73dc9f433d6.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 770 bytes {application} [built]
+[./app/javascript/packs/bootstrap_custom.js] 456 bytes {bootstrap_custom} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} {bootstrap_custom} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} {bootstrap_custom} [built]
+    + 19 hidden modules
+
+  Rendered layouts/_header.html.erb (Duration: 1.0ms | Allocations: 197)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+Completed 200 OK in 37046ms (Views: 37042.4ms | ActiveRecord: 0.0ms | Allocations: 23482)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-04-01 23:39:57 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"Qgd4CEM82Ieu5/YvBMA+bcquabhCouj6w408v1ldBg1Lad9UqcDbMWKXz0QGMp4zWLYabj5ZdLld1N39wc1v3w==", "user"=>{"email"=>"Uduak", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (50.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "uduak"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 225ms (ActiveRecord: 51.4ms | Allocations: 3061)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"Qgd4CEM82Ieu5/YvBMA+bcquabhCouj6w408v1ldBg1Lad9UqcDbMWKXz0QGMp4zWLYabj5ZdLld1N39wc1v3w==", "user"=>{"email"=>"Uduak", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 76.6ms | Allocations: 9144)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 163)
+  Rendered layouts/_flash.html.erb (Duration: 0.7ms | Allocations: 10)
+Completed 200 OK in 3249ms (Views: 152.1ms | ActiveRecord: 0.0ms | Allocations: 17928)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-04-01 23:40:06 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.1ms | Allocations: 118)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 93.7ms | Allocations: 10741)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 2.8ms | Allocations: 204)
+  Rendered layouts/_flash.html.erb (Duration: 0.3ms | Allocations: 17)
+Completed 200 OK in 200ms (Views: 195.4ms | ActiveRecord: 0.0ms | Allocations: 19475)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-04-01 23:41:02 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"E/IThQD0G/lIIClYIDGGY3fOEJ97A1PAATgF11Yufj5q7R2DOnsog1VP2VhXHSHTAIle9lOYQbta5Cg4GqQAwQ==", "user"=>{"name"=>"Uduak", "email"=>"johnuduak066@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (5.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johnuduak066@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 80)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 49.4ms | Allocations: 10029)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 197)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 1803ms (Views: 97.0ms | ActiveRecord: 7.8ms | Allocations: 28704)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-04-01 23:41:31 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"JBKpYiZ2N6eusZP7mNtk4MdcXtczGQEtUHPxTG9la6otfA4+zIo0EWLBqpCaKcS+VUQtAU/inW7OKhAO9/UCeA==", "user"=>{"name"=>"Uduak", "email"=>"udberg@icloud.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "udberg@icloud.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (21.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "name") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "udberg@icloud.com"], ["encrypted_password", "$2a$12$VjzfsTXV8YDDIgQm15xdTuVP7JCze30tN/Ozc9sWWk0GmY2/I6N5i"], ["created_at", "2021-04-01 22:41:32.920984"], ["updated_at", "2021-04-01 22:41:32.920984"], ["name", "Uduak"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1785ms (ActiveRecord: 25.0ms | Allocations: 7677)
+
+
+Started GET "/" for 127.0.0.1 at 2021-04-01 23:41:33 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 196.4ms | Allocations: 5950)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 83)
+  Rendered layouts/_flash.html.erb (Duration: 0.5ms | Allocations: 20)
+Completed 200 OK in 406ms (Views: 362.1ms | ActiveRecord: 2.0ms | Allocations: 15672)
+
+
+Started GET "/" for 127.0.0.1 at 2021-04-01 23:42:09 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 847)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.3ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 1.1ms | Allocations: 17)
+Completed 200 OK in 56ms (Views: 48.7ms | ActiveRecord: 0.9ms | Allocations: 9867)
+
+
+Started GET "/" for 127.0.0.1 at 2021-04-01 23:42:10 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (8.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 847)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 93ms (Views: 77.7ms | ActiveRecord: 8.8ms | Allocations: 9876)
+
+
+Started GET "/" for 127.0.0.1 at 2021-04-01 23:42:12 +0100
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 3.8ms | Allocations: 847)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 0.4ms | Allocations: 78)
+  Rendered layouts/_flash.html.erb (Duration: 0.2ms | Allocations: 17)
+Completed 200 OK in 86ms (Views: 51.2ms | ActiveRecord: 1.1ms | Allocations: 9882)
+
+
