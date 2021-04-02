@@ -2,26 +2,7 @@
 <h1 class='text-center pt-4'>All groups</h1>
 
 <div class='p-4'>
-<% @groups.each do |g| %>
-    <div class='list-group mt-3'>
-        <div class=' list-group-item list-group-item-action'>
-            <div class='d-flex align-items-center justify-content-between'>
-                <div class='d-flex align-items-center'>
-                  <img src="<%=g.icon%>" class="size rounded"/>
-                  <h5>
-                    <%= link_to g.name, g ,class:'ml-2 text-lg' %>
-                  </h5>
-                </div>
-            </div>
-            <hr>
-            <div class='d-flex justify-content-between align-items-center'>
-                  <h6>Group by: <%= g.user.name %> </h6>
-                   <h6><%= g.created_at.strftime("%d %B %Y") %> </h6>
-            </div>
-           
-        </div>
-    </div>
-<% end %>
+<%= render @groups%>
 
 <%= link_to 'Create new', new_group_path, class: 'btn btn-primary btn__sign my-3' %>
 
