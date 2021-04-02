@@ -204,3 +204,26 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 86ms (Views: 51.2ms | ActiveRecord: 1.1ms | Allocations: 9882)
 
 
+Started GET "/" for 127.0.0.1 at 2021-04-02 08:43:16 +0100
+  [1m[35m (8.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-04-02 08:43:19 +0100
+Processing by UsersController#show as HTML
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (16.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 2114.3ms | Allocations: 20954)
+  Rendered users/show.html.erb within layouts/application (Duration: 2383.6ms | Allocations: 28246)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.erb (Duration: 2.4ms | Allocations: 318)
+  Rendered layouts/_header.html.erb (Duration: 4.2ms | Allocations: 464)
+  Rendered layouts/_flash.html.erb (Duration: 6.7ms | Allocations: 359)
+Completed 200 OK in 2675ms (Views: 2536.8ms | ActiveRecord: 3.2ms | Allocations: 46938)
+
+
+  Rendered layouts/_flash.html.erb (Duration: 48.6ms | Allocations: 867)
+Completed 200 OK in 3423ms (Views: 2563.4ms | ActiveRecord: 61.0ms | Allocations: 52235)
+
+

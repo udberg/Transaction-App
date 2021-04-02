@@ -1,0 +1,20 @@
+<div class='list-group mt-3'>
+        <div class='list-group-item list-group-item-action'>
+            <div class='d-flex justify-content-between align-items-center'>
+                <div class='d-flex align-items-center'>
+                   <h5 class='ml-2'> <%=  payment.name %></h5>
+                </div>
+                <h5><%= number_to_currency(payment.amount) %></h5>
+            </div>
+            <hr>
+            
+            <div class='d-flex justify-content-between'>
+              <div>
+                <%= link_to icon("trash", class: "text-danger main__icon"), payment, method: :delete, data: { confirm: 'Are you sure' } %>
+                <%= link_to icon("arrow-repeat", class: "text-success main__icon"), edit_payment_path(payment)  %>
+              </div>
+              <span><%= payment.created_at.strftime("%d %B %Y") %></span>
+            </div>
+        
+        </div>
+    </div>
