@@ -1,0 +1,28 @@
+ <% flash.each do |type, msg| %>
+      <% if type == "notice" %>
+        <div class="alert alert-success">
+         <ul>
+            <li>
+              <%= msg %>
+            </li>
+         </ul>
+        </div>
+        
+      <% elsif type == "alert" %>
+        <div class="alert alert-danger">
+           <ul>
+            <li>
+              <%= msg %>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <div class='alert alert-<%= "#{type}" %>'>
+         <ul>
+            <li>
+              <%= msg %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+<% end %>

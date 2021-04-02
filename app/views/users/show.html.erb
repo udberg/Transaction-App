@@ -1,0 +1,23 @@
+<%= provide(:title,current_user.name) %>
+<div class='row'>
+<div class='col-md-6 mx-auto alert alert-primary'>
+<div class='d-flex flex-column justify-content-center mx-auto my-3 '>
+  <%= image_tag("avatar.png", width:100, class:'mx-auto') %>
+  <h1 class='text-center mt-2'> Hi there, <%= current_user.name %>! </h1>
+</div>
+<div class='list-group my-3'>
+  <div class='list-group-item list-group-item-action rounded bg-primary'>
+    <%= link_to 'All my transactions', payments_path, class: 'text-lg text-white' %>
+  </div>
+  <div class='list-group-item list-group-item-action my-3 bg-primary rounded'>
+      <%= link_to 'All my external transactions', external_payments_path, class: 'text-lg text-white' %>
+  </div>
+  <div class='list-group-item list-group-item-action  bg-primary rounded'>
+      <%= link_to 'All groups', groups_path, class: 'text-lg text-white' %>
+  </div>
+</div>
+</div>
+
+</div>
+
+  

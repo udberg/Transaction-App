@@ -1,0 +1,32 @@
+<%= provide(:title, @group.name) %>
+<div class='p-4'>
+  <div class='d-flex justify-content-center align-items-center'>
+    <img src="<%=@group.icon%>" class="size rounded"/>
+    <h2  class='ml-2'><%= @group.name %></h2>
+  </div>
+    <hr>
+    <% @group_payments.each do |g| %>
+    <div class='list-group  mt-3'>
+        <div class='list-group-item list-group-item-action'>
+            <div class='d-flex justify-content-between align-items-center'>
+                <div class='d-flex align-items-center'>
+                  <img src="<%=@group.icon%>" class="size rounded"/>
+                   <h5 class='ml-2'> <%=  g.name %></h5>
+                </div>
+                <h5><%= number_to_currency(g.amount) %></h5>
+            </div>
+            <hr>
+            
+            <div class='d-flex justify-content-between'>
+              <span>Transaction by: <%= g.user.name %></span>
+              <span><%= g.created_at.strftime("%d %B %Y") %></span>
+            </div>
+        
+        </div>
+    </div>
+    <% end %>
+   <div class='d-flex justify-content-between align-items-center mt-3'>
+      <%= link_to icon("arrow-left-square", class: "text-danger main__icon"),groups_path %>
+       <%= will_paginate @group_payments, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+   </div>
+</div>

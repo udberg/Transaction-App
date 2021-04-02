@@ -1,0 +1,13 @@
+<%= provide(:title,'All groups') %>
+<h1 class='text-center pt-4'>All groups</h1>
+
+<div class='p-4'>
+<%= render @groups%>
+
+<%= link_to 'Create new', new_group_path, class: 'btn btn-primary btn__sign my-3' %>
+
+<div class='d-flex justify-content-between align-items-center'>
+    <%= link_to icon("arrow-left-square", class: "text-danger main__icon"), root_path %>
+     <%= will_paginate @groups, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+</div>

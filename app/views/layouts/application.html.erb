@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <%= render 'layouts/header' %>
+  <div class='container bg-white p-4  h-100 border'>
+ 
+    <%= render 'layouts/flash' %>
+    <%= yield %>
+
+  </div>
+  </body>
+</html>
